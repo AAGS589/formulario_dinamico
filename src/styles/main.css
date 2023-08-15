@@ -1,4 +1,21 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,400&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #e5e5e5;
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+main{
+    max-width: 800px;
+    width: 80%;
+    margin: auto;
+    padding: 40px;
 }
