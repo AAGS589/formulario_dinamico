@@ -45,7 +45,7 @@ const Error = styled.p`
     font-size: 12px;
     margin-bottom: 0;
     color: ${colores.error};
-    /* display: none;*/
+    display: none;
 `;
 
 
@@ -54,10 +54,30 @@ const IconoDeValidacion = styled(FontAwesomeIcon)`
     right: 10px;
     bottom: 14px;
     z-index: 100;
+    opacity: 0;
 `;
 
-const CheckGenero = styled.div`
+const ContenedorGenero = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`;
 
+const ContentnpGenero = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    
+    input{
+        margin-right: 40px;
+    }
+`;
+
+const ContenedorBoton = styled.div`
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    
 `;
 
 const Boton = styled.button`
@@ -77,5 +97,28 @@ const Boton = styled.button`
     }
 `;
 
-export {Formulario, Label, GrupInputs, Input, Error, IconoDeValidacion, CheckGenero};
+const ErrorLlenado = styled.div`
+    height: 45px;
+    line-height: 45px;
+    background: ${colores.error};
+    padding: 0px 15px;
+    border-radius: 3px;
+    p{
+        margin: 0;
+    }
+
+    b{
+        margin-left: 10px;
+    }
+`;
+
+const MensajeEnvio = styled.p`
+    font-size: 14px;
+    color: ${colores.exito};
+    display: none; 
+`;
+
+export {Formulario, Label, GrupInputs, 
+    Input, Error, IconoDeValidacion, 
+    ContenedorGenero, ContentnpGenero, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio};
 

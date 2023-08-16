@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faExclamation } from '@fortawesome/free-solid-svg-icons'
-import {Formulario, GrupInputs, Input, Label, Error, IconoDeValidacion} from '../elementos/Formulario.jsx'
+import {Formulario, GrupInputs, Input, Label, Error, IconoDeValidacion, ContenedorGenero, ContentnpGenero, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio} from '../elementos/Formulario.jsx'
 
 export class Form extends Component {
   render() {
@@ -16,35 +16,36 @@ export class Form extends Component {
           </GrupInputs>
           <Error>Lorem ipsum dolor. Nobis vero sit corrupti.</Error>
 
-          <CheckGenero>
+          <ContenedorGenero>
             <Label htmlFor=''>Género</Label>
-            <label htmlFor='masculino'>
-              Masculino
-              <input type='checkbox' name='masculino' id='masculino'/>
-            </label>
-            <label htmlFor='masculino'>
-              Femenino
-              <input type='checkbox' name='masculino' id='masculino'/>
-            </label>
-            <label htmlFor='masculino'>
-              Otro
-              <input type='checkbox' name='masculino' id='masculino'/>
-            </label>
+            <ContentnpGenero>
+              <label htmlFor='masculino'>
+                Masculino
+                <input type='checkbox' name='masculino' id='masculino'/>
+              </label>
+              <label htmlFor='femenino'>
+                Femenino
+                <input type='checkbox' name='masculino' id='femenino'/>
+              </label>
+              <label htmlFor='otro'>
+                Otro
+                <input type='checkbox' name='masculino' id='otro'/>
+              </label>
+            </ContentnpGenero>
             
-          </CheckGenero>
+          </ContenedorGenero>
 
-          <div>
+          {false && <ErrorLlenado>
             <p>
               <FontAwesomeIcon icon={faExclamation}/>
               <b>Error:</b> Debe llenar los campos requeridos
             </p>
-          </div>
+          </ErrorLlenado>}
 
-          <div>
-            <button type='submit'>Enviar</button>
-            <p>Los datos se enviaron correctamente</p>
-          </div>
-
+          <ContenedorBoton>
+            <Boton type='submit'>Enviar</Boton>
+            <MensajeEnvio>Los datos se enviaron correctamente</MensajeEnvio>
+          </ContenedorBoton>
         </Formulario>
 
         

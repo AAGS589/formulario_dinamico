@@ -24,4 +24,10 @@ main{
     main{
         width: 50%;
     }
-  }
+}
+
+@media (min-width: 900px) {
+    main{
+        width: 40%;
+    }
+}
