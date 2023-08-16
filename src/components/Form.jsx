@@ -16,7 +16,7 @@ export class Form extends Component {
           </GrupInputs>
           <Error>Lorem ipsum dolor. Nobis vero sit corrupti.</Error>
 
-          <div>
+          <CheckGenero>
             <Label htmlFor=''>Género</Label>
             <label htmlFor='masculino'>
               Masculino
@@ -31,7 +31,7 @@ export class Form extends Component {
               <input type='checkbox' name='masculino' id='masculino'/>
             </label>
             
-          </div>
+          </CheckGenero>
 
           <div>
             <p>

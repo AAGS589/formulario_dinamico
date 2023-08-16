@@ -48,6 +48,7 @@ const Error = styled.p`
     /* display: none;*/
 `;
 
+
 const IconoDeValidacion = styled(FontAwesomeIcon)`
     position: absolute;
     right: 10px;
@@ -55,8 +56,26 @@ const IconoDeValidacion = styled(FontAwesomeIcon)`
     z-index: 100;
 `;
 
+const CheckGenero = styled.div`
 
+`;
 
+const Boton = styled.button`
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .1s ease all;
 
-export {Formulario, Label, GrupInputs, Input, Error, IconoDeValidacion};
+    &:hover{
+        box-shadow: 3px 0px 30px rgba(163, 163, 163, 1)
+    }
+`;
+
+export {Formulario, Label, GrupInputs, Input, Error, IconoDeValidacion, CheckGenero};
 
