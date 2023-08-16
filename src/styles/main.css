@@ -19,3 +19,9 @@ main{
     margin: auto;
     padding: 40px;
 }
+
+@media (min-width: 768px) {
+    main{
+        width: 50%;
+    }
+  }

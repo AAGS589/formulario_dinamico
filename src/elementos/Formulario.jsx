@@ -44,6 +44,7 @@ const Input = styled.input`
 const Error = styled.p`
     font-size: 12px;
     margin-bottom: 0;
+    color: ${colores.error};
     /* display: none;*/
 `;
 
