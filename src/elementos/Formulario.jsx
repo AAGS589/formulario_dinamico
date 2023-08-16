@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const colores ={
     borde: "#8875FF",
@@ -10,14 +10,12 @@ const colores ={
 const Formulario = styled.form`
     display: grid;
     grid-template-row: 1fr;
-    gap: 20px;
+    gap: 10px;
 `;
 
 const Label = styled.label`
     display: block;
-    fotn-weight: bold;
-    padding: px;
-    
+    font-weight: 600;
     cursor: pointer;
 `;
 
@@ -27,16 +25,37 @@ const GrupInputs = styled.div`
 `;
 
 const Input = styled.input`
-    width: 100%
+    width: 100%;
     background: #fff;
-    border-radious: 3px;
+    border-radius: 10px;
     height: 45px;
     line-height: 45px;
     padding: 0 40px 0 10px;
-    transition: .3 ease all;
+    transition: .3s ease all;
     border: 3px solid transparent;
-`; 
+
+    &:focus {
+        border: 1px solid ${colores.borde};
+        outline: none;
+        box-shadow: 3px 0px 30px rgba(163,163,163, 0.5);
+    }
+`;
+
+const Error = styled.p`
+    font-size: 12px;
+    margin-bottom: 0;
+    /* display: none;*/
+`;
+
+const IconoDeValidacion = styled(FontAwesomeIcon)`
+    position: absolute;
+    right: 10px;
+    bottom: 14px;
+    z-index: 100;
+`;
 
 
-export {Formulario, Label, GrupInputs, Input};
+
+
+export {Formulario, Label, GrupInputs, Input, Error, IconoDeValidacion};
 

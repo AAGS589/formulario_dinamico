@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import {Formulario, GrupInputs, Input, Label} from '../elementos/Formulario.jsx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import {Formulario, GrupInputs, Input, Label, Error, IconoDeValidacion} from '../elementos/Formulario.jsx'
 
 export class Form extends Component {
   render() {
@@ -7,12 +9,12 @@ export class Form extends Component {
       <>
       <main>
         <Formulario>
-          <Label htmlFor="">Usuario</Label>
+          <Label htmlFor="">Nombre completo *</Label>
           <GrupInputs>
-            <Input type="text" placeholder='usuario' />
-            <ion-icon name="checkmark"></ion-icon>
+            <Input type="text" placeholder='Ingresa tu nombre' />
+            <IconoDeValidacion icon={faCheck} />
           </GrupInputs>
-          <p>Lorem ipsum dolor. Nobis vero sit corrupti.</p>
+          <Error>Lorem ipsum dolor. Nobis vero sit corrupti.</Error>
         </Formulario>
 
         
