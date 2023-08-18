@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faExclamation } from '@fortawesome/free-solid-svg-icons'
-import {Formulario, GrupInputs, Input, Label, Error, IconoDeValidacion, ContenedorGenero, ContentnpGenero, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio} from '../elementos/Formulario.jsx'
+import { faExclamation } from '@fortawesome/free-solid-svg-icons'
+import ComponenteInput from './ComponenteIntut.jsx'
+import {Formulario,  ContenedorGenero, Label, ContentnpGenero, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio} from '../elementos/Formulario.jsx'
 
 export class Form extends Component {
   render() {
@@ -9,12 +10,23 @@ export class Form extends Component {
       <>
       <main>
         <Formulario>
-          <Label htmlFor="nombre">Nombre completo *</Label>
-          <GrupInputs>
-            <Input type="text" placeholder='Ingresa tu nombre' id='nombre'/>
-            <IconoDeValidacion icon={faCheck} />
-          </GrupInputs>
-          <Error>Lorem ipsum dolor. Nobis vero sit corrupti.</Error>
+          <ComponenteInput
+            tipo='text' 
+            label= "Nombre completo"
+            placeholder= 'Ingresa tu nombre'
+            name = 'nombre'
+            mensajeError = 'el nombre solo puede contener letras'
+            expresionRegular = ''
+          />
+
+          <ComponenteInput 
+            tipo = 'date'
+            label= "Fecha de nacimiento"
+            placeholder= ''
+            name = 'date'
+            mensajeError= 'el formato de fecha debe ser: dd/mm/aaaa'
+            expresionRegular= ''
+          />
 
           <ContenedorGenero>
             <Label htmlFor=''>Género</Label>
