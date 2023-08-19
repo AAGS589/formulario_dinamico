@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled, css } from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const colores ={
@@ -6,6 +6,8 @@ const colores ={
     error: "#c21f40",
     exito: "#36802d"
 }
+
+
 
 const Formulario = styled.form`
     display: grid;
@@ -17,6 +19,10 @@ const Label = styled.label`
     display: block;
     font-weight: 600;
     cursor: pointer;
+
+    ${props => props.valido === 'false' && css`
+        color: ${colores.error}
+    `}
 `;
 
 const GrupInputs = styled.div`
@@ -39,6 +45,13 @@ const Input = styled.input`
         outline: none;
         box-shadow: 3px 0px 30px rgba(163,163,163, 0.5);
     }
+
+    ${props => props.valido === 'true' && css`
+        border: 3px solid transparent;
+    `}
+    ${props => props.valido === 'false' && css`
+        border: 3px solid ${colores.error} !important; 
+    `}
 `;
 
 const Error = styled.p`
@@ -46,6 +59,14 @@ const Error = styled.p`
     margin-bottom: 0;
     color: ${colores.error};
     display: none;
+
+    ${props => props.valido === 'true' && css`
+        display: none;
+    `}
+
+    ${props => props.valido === 'false' && css`
+        display: block;
+    `}
 `;
 
 

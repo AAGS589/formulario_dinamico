@@ -3,15 +3,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {GrupInputs, Input, Label, Error, IconoDeValidacion,} from '../elementos/Formulario';
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-function ComponenteInput({tipo, label, placeholder, name, mensajeError, expresionRegular}) {
+function ComponenteInput({estado, cambiarEstado, tipo, label, placeholder, name, mensajeError, expresionRegular}) {
+
+    const onChange = (e) =>{
+        cambiarEstado({...estado, campo: e.target.value})
+    }
+
+    const validacion = () =>{
+        if(expresionRegular){
+            if(expresionRegular.test(estado.campo)){
+                cambiarEstado({...estado, valido: 'true'})
+            }else{
+                cambiarEstado({...estado, valido: 'false'})
+            }
+        }
+    }
+    
 return (
     <div>
-        <Label htmlFor={name}>{label}</Label>
+        <Label htmlFor={name}valido={estado.valido} >{label}</Label>
         <GrupInputs>
-            <Input type={tipo} placeholder={placeholder} id={name}/>
+            <Input type={tipo} placeholder={placeholder} id={name} value={estado.campo} onChange={onChange} onKeyUp={validacion} onBlur={validacion} valido={estado.valido} />
             <IconoDeValidacion icon={faCheck} />
         </GrupInputs>
-        <Error>mensajeError</Error>
+        <Error valido={estado.valido}>{mensajeError} </Error>
     </div>
 )
 }
