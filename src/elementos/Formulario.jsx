@@ -76,6 +76,15 @@ const IconoDeValidacion = styled(FontAwesomeIcon)`
     bottom: 14px;
     z-index: 100;
     opacity: 0;
+
+    ${props => props.valido === 'false' && css`
+        opacity: 1;
+        color: ${colores.error}
+    `}
+    ${props => props.valido === 'true' && css`
+        opacity: 1;
+        color: ${colores.exito}
+    `}
 `;
 
 const ContenedorGenero = styled.div`

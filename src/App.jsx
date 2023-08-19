@@ -13,9 +13,9 @@ function App() {
     const[Date, cambiarDate] = useState({campo: '', valido: null});
 
     const expresiones = {
-      expresionNombre: /^[a-zA-Z\s]+$/,
+      expresionNombre: /^[a-zA-ZÁ-ÿ\s]+$/,
       expresionEdad: /^(1[0-9]|[2-9][0-9]|100)$/,
-      expresionFecha: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/
+      expresionFecha: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19\d{2}|20\d{2})$/
     };
   return (
     <>
@@ -46,9 +46,9 @@ function App() {
           <ComponenteInput
             estado = {Date}
             cambiarEstado = {cambiarDate} 
-            tipo = 'date'
+            tipo = 'text'
             label= "Fecha de nacimiento"
-            placeholder= ''
+            placeholder= 'dd/mm/aaaa'
             name = 'date'
             mensajeError= 'el formato de fecha debe ser: dd/mm/aaaa'
             expresionRegular= {expresiones.expresionFecha}
