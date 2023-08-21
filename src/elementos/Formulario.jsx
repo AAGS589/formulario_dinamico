@@ -87,20 +87,25 @@ const IconoDeValidacion = styled(FontAwesomeIcon)`
     `}
 `;
 
-const ContenedorGenero = styled.div`
+const ContenedorSelects = styled.div`
+    margin: 10px 10px 10px 0px; 
     width: 100%;
     display: flex;
     flex-direction: column;
 `;
 
-const ContentnpGenero = styled.div`
+const ContenedorSelectsInputs = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    
-    input{
-        margin-right: 40px;
-    }
+`;
+
+const LabelChecks = styled.label`
+    font-weight: 400;
+    cursor: pointer;
+`;
+
+const InputCheck = styled.input`
+    margin-right: 40px
 `;
 
 const ContenedorBoton = styled.div`
@@ -149,6 +154,16 @@ const MensajeEnvio = styled.p`
 `;
 
 export {Formulario, Label, GrupInputs, 
-    Input, Error, IconoDeValidacion, 
-    ContenedorGenero, ContentnpGenero, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio};
+    Input, 
+    Error, 
+    IconoDeValidacion, 
+    ContenedorBoton, 
+    Boton, 
+    ErrorLlenado, 
+    MensajeEnvio, 
+    ContenedorSelects, 
+    ContenedorSelectsInputs,
+    LabelChecks,
+    InputCheck
+};
 

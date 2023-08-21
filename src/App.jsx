@@ -3,7 +3,8 @@ import Header from './components/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamation } from '@fortawesome/free-solid-svg-icons'
 import ComponenteInput from './components/ComponenteIntut'
-import {Formulario,  ContenedorGenero, Label, ContentnpGenero, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio} from './elementos/Formulario'
+import ComponentChecks from './components/ComponentChecks'
+import {Formulario, Label, ContenedorSelects, ContenedorSelectsInputs, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio,LabelChecks, InputCheck} from './elementos/Formulario'
 
 
 function App() {
@@ -54,66 +55,23 @@ function App() {
             expresionRegular= {expresiones.expresionFecha}
           />
 
-          <ContenedorGenero>
-            <Label htmlFor=''>Género</Label>
-            <ContentnpGenero>
-              <label htmlFor='masculino'>
-                Masculino
-                <input type='radio' name='masculino' id='masculino'/>
-              </label>
-              <label htmlFor='femenino'>
-                Femenino
-                <input type='radio' name='masculino' id='femenino'/>
-              </label>
-              <label htmlFor='otro'>
-                Otro
-                <input type='radio' name='masculino' id='otro'/>
-              </label>
-            </ContentnpGenero>
-            
-          </ContenedorGenero>
+          <ComponentChecks 
+            mainName = 'Género'
+            tipo = 'radio'
+            checkboxes={['Masculino ', 'Femenino ','otro ']}
+          />
 
-          <ContenedorGenero>
-            <Label htmlFor=''>Lenguajes de programación</Label>
-            <ContentnpGenero>
-              <label htmlFor='masculino'>
-                Javascript
-                <input type='checkbox' name='masculino' id='masculino'/>
-              </label>
-              <label htmlFor='femenino'>
-                Python
-                <input type='checkbox' name='masculino' id='femenino'/>
-              </label>
-              <label htmlFor='otro'>
-                Java
-                <input type='checkbox' name='masculino' id='otro'/>
-              </label>
-              <label htmlFor='otro'>
-                C#
-                <input type='checkbox' name='masculino' id='otro'/>
-              </label>
-            </ContentnpGenero>
-            
-          </ContenedorGenero>
+          <ComponentChecks 
+            mainName= 'Lenguajes de programación'
+            tipo = 'checkbox'
+            checkboxes={['Javascript ', 'Python ','Java ', 'C# ']}
+          />
 
-          <ContenedorGenero>
-            <Label htmlFor=''>Nivel de experiencia</Label>
-            <ContentnpGenero>
-              <label htmlFor='masculino'>
-                Junior
-                <input type='radio' name='masculino' id='masculino'/>
-              </label>
-              <label htmlFor='femenino'>
-                Medio
-                <input type='radio' name='masculino' id='femenino'/>
-              </label>
-              <label htmlFor='otro'>
-                Senior
-                <input type='radio' name='masculino' id='otro'/>
-              </label>
-            </ContentnpGenero>
-            
-          </ContenedorGenero>
+          <ComponentChecks 
+            mainName= 'Nivel de experiencia'
+            tipo = 'checkbox'
+            checkboxes={['Junior ', 'Medio ','Senior ']}
+          />
 
           {false && <ErrorLlenado>
             <p>
