@@ -5,18 +5,30 @@ import { faExclamation } from '@fortawesome/free-solid-svg-icons'
 import ComponenteInput from './components/ComponenteIntut'
 import ComponentChecks from './components/ComponentChecks'
 import ComponentButton from './components/ComponentButton'
-import {Formulario, Label, ContenedorSelects, ContenedorSelectsInputs, ContenedorBoton, Boton, ErrorLlenado, MensajeEnvio,LabelChecks, InputCheck} from './elementos/Formulario'
+import {
+  Formulario, 
+  Label, 
+  ContenedorSelects, 
+  ContenedorSelectsInputs, 
+  ContenedorBoton, 
+  Boton, 
+  ErrorLlenado, 
+  MensajeEnvio,
+  LabelChecks, 
+  InputCheck
+} from './elementos/Formulario'
 
 
 function App() {
 
+  
     const [name, cambiarName] = useState({campo: '', valido: null});
     const[age, cambiarAge] = useState({campo: '', valido: null});
     const[Date, cambiarDate] = useState({campo: '', valido: null});
     const[SelctGenero, cambiarGenero] = useState({campo: '', valido: null});
     const[SelectLenguajes, cambiarLenguajes] = useState({campo: '', valido: null});
-    const [hasError, setHasError] = useState(false);
-    const [formValido, cambiarForm] = useState(null);
+    const [formularioValido, cambiarForm] = useState(null);
+    const [formValido, setFormValido] = useState(true);
 
     const expresiones = {
       expresionNombre: /^[a-zA-ZÁ-ÿ\s]+$/,
@@ -24,10 +36,41 @@ function App() {
       expresionFecha: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19\d{2}|20\d{2})$/
     };
 
+    const [selectData, setSelectData] = useState({
+      genero: [],
+      lenguajes: [],
+      experiencia: [],
+    });
+
+    const updateSelectData = (name, value) => {
+      setSelectData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    };
+    
     const onSubmit = (e) =>{
       e.preventDefault();
 
       if(name.valido === 'true' && age.valido){
+        const jsonData = {
+          personalInfo: {
+            fullName: name.campo,
+            DOB: Date.campo,
+            gender: selectData['género *-selection']
+          },
+          details: {
+            age: age.campo,
+            programmingLanguages: selectData['lenguajes de programación-selection'],
+            experienceLevel: selectData['nivel de experiencia *-selection'],
+          },
+          files: {
+            resume: '',
+          }
+        }
+
+        console.log(jsonData);
+
         cambiarForm(true);
 
       } else{
@@ -65,7 +108,7 @@ function App() {
             estado = {Date}
             cambiarEstado = {cambiarDate} 
             tipo = 'text'
-            label= "Fecha de nacimiento"
+            label= "Fecha de nacimiento *"
             placeholder= 'dd/mm/aaaa'
             name = 'date'
             mensajeError= 'el formato de fecha debe ser: dd/mm/aaaa'
@@ -73,37 +116,39 @@ function App() {
           />
 
           <ComponentChecks
-            estado = {hasError}
-            cambiarEstado={setHasError} 
-            mainName = 'Género'
+            mainName = 'Género *'
             tipo = 'radio'
             checkboxes={['Masculino ', 'Femenino ','otro ']}
             mensajeError = 'Este campo es requerido'
-            required = 'true'
+            setFormValido={setFormValido}
+            formValido={formValido}
+            required
+            updateSelectData={updateSelectData} 
           />
 
           <ComponentChecks 
-            estado={hasError}
-            cambiarEstado={setHasError}
             mainName= 'Lenguajes de programación'
             tipo = 'checkbox'
             checkboxes={['Javascript ', 'Python ','Java ', 'C# ']}
-            required = 'false'
+            setFormValido={setFormValido}
+            formValido={formValido}
+            updateSelectData={updateSelectData} 
           />
 
           <ComponentChecks 
-            estado={hasError}
-            cambiarEstado={setHasError}
-            mainName= 'Nivel de experiencia'
-            tipo = 'checkbox'
+            mainName= 'Nivel de experiencia *'
+            tipo = 'radio'
             checkboxes={['Junior ', 'Medio ','Senior ']}
             mensajeError = 'Este campo es requerido'
-            required = 'true'
+            setFormValido={setFormValido}
+            formValido={formValido}
+            required
+            updateSelectData={updateSelectData} 
           />
 
           <ComponentButton/>
 
-          {formValido === false && <ErrorLlenado>
+          {formularioValido === false && <ErrorLlenado>
             <p>
               <FontAwesomeIcon icon={faExclamation}/>
               <b>Error:</b> Debe llenar los campos requeridos
@@ -112,7 +157,7 @@ function App() {
 
           <ContenedorBoton>
             <Boton type='submit'>Enviar</Boton>
-            {formValido === true && <MensajeEnvio>Los datos se enviaron correctamente</MensajeEnvio>}
+            {formularioValido === true && <MensajeEnvio>Los datos se enviaron correctamente</MensajeEnvio>}
           </ContenedorBoton>
         </Formulario>
 

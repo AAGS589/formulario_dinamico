@@ -1,33 +1,57 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 
 import {Label, ContenedorSelects, ContenedorSelectsInputs,LabelChecks, InputCheck, Error} from './../elementos/Formulario'
 
-function ComponentChecks({ estado, cambiarEstado, mainName, tipo, checkboxes, mensajeError, required}) {
+function ComponentChecks({
+    mainName, 
+    tipo, 
+    checkboxes, 
+    mensajeError,
+    setFormValido, 
+    required,
+    formValido,
+    updateSelectData
+}) {
     
+    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
-    const handleInputChange = () => {
+    const handleInputChange = (checkboxValue) => {
+        const updatedSelection = [...selectedCheckboxes];
 
-        if (required === 'true' && estado.length === 0) {
-            {estado}(true);
+        if (updatedSelection.includes(checkboxValue)) {
+            
+            const index = updatedSelection.indexOf(checkboxValue);
+            updatedSelection.splice(index, 1);
         } else {
-            {estado}(false);
+            
+            updatedSelection.push(checkboxValue);
         }
-    
-        cambiarEstado();
+        setSelectedCheckboxes(updatedSelection);
+        
+        updateSelectData(`${mainName.toLowerCase()}-selection`, updatedSelection);
+
     };
+
+    
 return (
     <div>
         <ContenedorSelects>
             <Label htmlFor=''>{mainName}</Label>
                 <ContenedorSelectsInputs>
-                    {checkboxes.map((checkboxes, index) => (
-                        <LabelChecks htmlFor={checkboxes} key={index}>
-                            {checkboxes}
-                            <InputCheck type={tipo} name={tipo} id={mainName} required={required === 'true'} onChange={handleInputChange}/>
+                    {checkboxes.map((checkboxValue, index) => (
+                        <LabelChecks htmlFor={checkboxValue} key={index}>
+                            {checkboxValue}
+                            <InputCheck 
+                                type={tipo} 
+                                name={checkboxes} 
+                                id={mainName} 
+                                required={required} 
+                                onChange={() => handleInputChange(checkboxValue)}
+                            />
                         </LabelChecks>
                     ))}
                 </ContenedorSelectsInputs>
-                {{estado} && <Error>{mensajeError}</Error>}
+                
         </ContenedorSelects>
     </div>
 )
