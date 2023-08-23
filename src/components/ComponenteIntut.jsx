@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {GrupInputs, Input, Label, Error, IconoDeValidacion,} from '../elementos/Formulario';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 

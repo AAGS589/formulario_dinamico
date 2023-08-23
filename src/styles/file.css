@@ -1,0 +1,38 @@
+.file {
+    display: none;
+}
+
+.file + label{
+    display: flex;
+    flex: 1;
+}
+
+.file-name{
+    background: white;
+    border: #e5e5e5;
+    flex: 1;
+    border-radius: 5px 0px 0px 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.file-button{
+    background-color: #2f3559;
+    color: white;
+    white-space: nowrap;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+.file-name,
+.file-button{
+    padding: 5px 10px;
+}
+
+.span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+}

@@ -7,8 +7,6 @@ const colores ={
     exito: "#36802d"
 }
 
-
-
 const Formulario = styled.form`
     display: grid;
     grid-template-row: 1fr;
@@ -115,6 +113,15 @@ const ContenedorBoton = styled.div`
     
 `;
 
+const ContenedorFile = styled.input`
+    border: 3px solid ${colores.error};
+    width: 100%;
+    input{
+        border: 3px solid ${colores.exito};
+        
+    }
+`;
+
 const Boton = styled.button`
     height: 45px;
     line-height: 45px;
@@ -150,7 +157,6 @@ const ErrorLlenado = styled.div`
 const MensajeEnvio = styled.p`
     font-size: 14px;
     color: ${colores.exito};
-    display: none; 
 `;
 
 export {Formulario, Label, GrupInputs, 
@@ -164,6 +170,7 @@ export {Formulario, Label, GrupInputs,
     ContenedorSelects, 
     ContenedorSelectsInputs,
     LabelChecks,
-    InputCheck
+    InputCheck,
+    ContenedorFile
 };
 
